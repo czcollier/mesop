@@ -33,6 +33,7 @@ class PageConfig:
   title: str
   stylesheets: list[str]
   security_policy: SecurityPolicy
+  cross_origin_resouce_controls: CrossOriginResourceControls
   on_load: OnLoadHandler | None
 
 

@@ -228,6 +228,11 @@ def configure_static_file_serving(
         "report-uri": "/__csp__",
       }
     )
+
+    cors = page_config.cross_origin_resource_controls
+    if cors and cors.allowed_origins:
+      response.headers["Access-Control-Allow-Origin"] = ", ".join(cors.allowed_origins)
+
     if page_config and page_config.stylesheets:
       csp["style-src"] += " " + " ".join(
         [sanitize_url_for_csp(url) for url in page_config.stylesheets]

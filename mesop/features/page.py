@@ -12,6 +12,7 @@ def page(
   title: str | None = None,
   stylesheets: list[str] | None = None,
   security_policy: SecurityPolicy | None = None,
+  cross_origin_resource_controls: CrossOriginResourceControls | None = None,
   on_load: OnLoadHandler | None = None,
 ) -> Callable[[Callable[[], None]], Callable[[], None]]:
   """Defines a page in a Mesop application.
@@ -42,7 +43,8 @@ def page(
         page_fn=wrapper,
         title=title or f"Mesop: {path}",
         stylesheets=deepcopy(stylesheets or default_stylesheets),
-        security_policy=deepcopy(security_policy)
+        security_policy=deepcopy(security_policy),
+        cross_origin_resource_controls = deepcopy(cross_origin_resource_controls)
         if security_policy
         else SecurityPolicy(),
         on_load=on_load,
