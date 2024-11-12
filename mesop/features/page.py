@@ -4,6 +4,7 @@ from typing import Callable
 
 from mesop.runtime import OnLoadHandler, PageConfig, runtime
 from mesop.security.security_policy import SecurityPolicy
+from mesop.security.cross_origin_resource_controls import CrossOriginResourceControls
 
 
 def page(

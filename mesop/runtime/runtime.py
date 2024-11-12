@@ -10,6 +10,7 @@ from mesop.events import LoadEvent, MesopEvent
 from mesop.exceptions import MesopDeveloperException, MesopUserException
 from mesop.key import Key
 from mesop.security.security_policy import SecurityPolicy
+from mesop.security.cross_origin_resource_controls import CrossOriginResourceControls
 from mesop.utils.backoff import exponential_backoff
 from mesop.warn import warn
 
@@ -34,6 +35,7 @@ class PageConfig:
   stylesheets: list[str]
   security_policy: SecurityPolicy
   cross_origin_resouce_controls: CrossOriginResourceControls
+  cross_origin_resource_controls: CrossOriginResourceControls
   on_load: OnLoadHandler | None
 
 
