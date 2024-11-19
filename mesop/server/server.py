@@ -69,8 +69,8 @@ def configure_flask_app(
     __name__,
     static_folder=static_folder,
     static_url_path=static_url_path,
-    application_root=application_root,
   )
+  flask_app.config["APPLICATION_ROOT"] = application_root
 
   def render_loop(
     path: str,
