@@ -26,6 +26,7 @@ class Config(BaseModel):
   state_session_backend_sql_table: str = "mesop_state_sessions"
   static_folder: str = ""
   static_url_path: str = "/static"
+  application_root: str = ""
 
   @property
   def state_session_enabled(self):
@@ -51,6 +52,7 @@ def CreateConfigFromEnv() -> Config:
     ),
     static_folder=os.getenv("MESOP_STATIC_FOLDER"),
     static_url_path=os.getenv("MESOP_STATIC_URL_PATH"),
+    application_root=os.getenv("APPLICATION_ROOT"),
   )
 
   return Config(

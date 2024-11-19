@@ -30,6 +30,7 @@ from mesop.server.server_debug_routes import configure_debug_routes
 from mesop.server.server_utils import (
   STREAM_END,
   create_update_state_event,
+  get_application_root,
   get_static_folder,
   get_static_url_path,
   is_same_site,
@@ -61,12 +62,14 @@ def configure_flask_app(
 
   static_folder = get_static_folder()
   static_url_path = get_static_url_path()
+  application_root = get_application_root()
   if static_folder and static_url_path:
     logger.info(f"Static folder enabled: {static_folder}")
   flask_app = Flask(
     __name__,
     static_folder=static_folder,
     static_url_path=static_url_path,
+    application_root=application_root,
   )
 
   def render_loop(

@@ -174,6 +174,22 @@ def get_static_url_path() -> str | None:
   return static_url_path
 
 
+def get_application_root() -> str | None:
+  if not app_config.application_root:
+    return None
+
+  application_root = app_config.application_root.strip()
+  if not application_root.startswith("/"):
+    raise MesopDeveloperException(
+      "Invalid application root. It must start with a slash: {application_root}"
+    )
+
+  if not application_root.endswith("/"):
+    application_root += "/"
+
+  return application_root
+
+
 def get_favicon() -> str | None:
   default_favicon_path = "./favicon.ico"
 
